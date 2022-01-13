@@ -26,6 +26,14 @@ app.post("/user", (req, res)=>{
   res.json({error:false, payload:users, msg:"add user"});
 });
 
+app.put("/user", (req, res)=>{
+   const {email, name, role} = req.body;
+   
+   users = users.map((user)=>user.email == email?{email, name, role}:user);
+   
+   res.json({error:false, payload: users, msg:"update user"});
+});
+
 app.delete("/user", (req, res) => {
     let {email} = req.body;
     
